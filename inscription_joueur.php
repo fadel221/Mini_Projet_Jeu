@@ -118,7 +118,7 @@ if (!empty($_POST["cree_compte"]))
                     if (in_array($file_extension,$extensions_autorisés))
                     {
                 $file_tmp_name=$_FILES["img"]["tmp_name"];
-                $file_dest=$file_name;
+                $file_dest="images/"."".$file_name;
                 
                 move_uploaded_file($file_tmp_name,$file_dest);
             

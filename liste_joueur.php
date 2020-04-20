@@ -1,4 +1,8 @@
+<?php  
 
+if (empty($_SESSION))
+    header('location:index.php.php');
+?>
 
 <!DOCTYPE html>
 <html>

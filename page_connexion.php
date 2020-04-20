@@ -20,7 +20,7 @@
 				</div>
 				</div>
 				<div class="error-form" error="error-1">
-				XXXXXX
+				*Ce champ est obligatoire
 				
 				
 				</div>
@@ -31,7 +31,7 @@
 				
 				</div>
 				</div>
-				<div class="error-form" error="error-2">XXXXXX
+				<div class="error-form" error="error-2">*Ce champ est obligatoire
 				</div>
 
 				<div class="input-form">

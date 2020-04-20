@@ -73,19 +73,11 @@
 
 
 <?php 
-session_start();
 if (empty($_SESSION))
-{
-            echo "<script>
-            alert('Vous navez pas accées à cette page');
-            </script>
-            ";
-        header('Location:index.php.php');
-        echo "<script>
-            alert('Vous navez pas accées à cette page');
-            </script>
-            ";
-    }
+
+    //Seul l'admin peut s'y connecter
+    header('Location:index.php.php');
+    
 if (!empty($_POST["cree_compte"]))
 {
     
@@ -118,14 +110,14 @@ if (!empty($_POST["cree_compte"]))
                     if (in_array($file_extension,$extensions_autorisés))
                     {
                 $file_tmp_name=$_FILES["img"]["tmp_name"];
-                $file_dest=$file_name;
+                $file_dest="images/"."".$file_name;
                 
                 move_uploaded_file($file_tmp_name,$file_dest);
             
         unset($_POST["cree_compte"]);
         unset($_POST["conf_pass"]);
         $_POST["score"]=0;
-        $_POST["role"]="player";
+        $_POST["role"]="admin";
         $_POST["img"]=$file_dest;
         $json[]=$_POST;
         $json=json_encode($json);
@@ -151,6 +143,8 @@ if (!empty($_POST["cree_compte"]))
             alert('Tout les champs sont obligatoires');
                 </script>";
 }
+
+
 
 
 

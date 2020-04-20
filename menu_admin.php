@@ -1,5 +1,7 @@
 <?php
-session_start(); 
+session_start();
+if (empty($_SESSION))
+    header('location:index.php.php'); 
 ?>
 
 <html>
@@ -116,7 +118,7 @@ session_start();
                     break;
 
                 case '2':
-                    require_once('inscription_admin.php');
+                    include('inscription_admin.php');
                     break;
 
                     case '3':
@@ -143,9 +145,7 @@ session_start();
 
 <?php
 
-if (empty($_SESSION))
-    header('location:index.php.php');
-else
+
 
     if (isset($_POST["deconnect"]) && !empty($_POST["deconnect"]))
 {
