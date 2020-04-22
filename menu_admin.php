@@ -39,7 +39,6 @@ if (empty($_SESSION))
 
                 <div class="header-menu-container">
                     <div class="decoration-circle" style="background-size:100%;background-image:url(<?php
-                        if (!empty($_SESSION))
                      echo $_SESSION["img"]; ?>);">
 
                         <div class="nom-admin">
@@ -90,7 +89,7 @@ if (empty($_SESSION))
 
                     </div>
                 </a>
-                            <a href="#">
+                            <a href="menu_admin.php?page=4">
                     <div class="choix-page">
                         <div class="text-choix-page">
                         Créer Questions
@@ -125,6 +124,9 @@ if (empty($_SESSION))
                     require_once('liste_joueur.php');
                     break;
 
+                    case '4':
+                    require_once('creer_questions.php');
+                    break;
                 
                     }
                 }
