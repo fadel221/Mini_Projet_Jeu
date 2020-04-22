@@ -58,10 +58,3 @@ $best_five_score=five_best_score($tab_score);
 </body>
 </html>
 
-<?php 
-if (!empty($_SESSION))
-{
-	echo $_SESSION["score"];
-}
-
- ?>
