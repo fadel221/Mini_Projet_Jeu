@@ -122,7 +122,12 @@ if (!empty($_POST["cree_compte"]))
         $json[]=$_POST;
         $json=json_encode($json);
         file_put_contents("bd.json",$json);
+        echo "<script>
+            alert('Enregistrement avec succées');
+                </script>";
+        exit();
         header('Location:index.php.php');
+
         }
             echo "<script>
             alert('Seul les formats PNG et JPEG');
