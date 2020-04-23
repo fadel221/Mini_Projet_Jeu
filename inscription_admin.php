@@ -126,7 +126,10 @@ if (!empty($_POST["cree_compte"]))
             alert('Enregistrement avec succées');
                 </script>";
         exit();
+<<<<<<< HEAD
         header('Location:index.php.php');
+=======
+>>>>>>> 4be828dec293a427b71879451b1057fcec0f2973
 
         }
             echo "<script>
