@@ -252,6 +252,7 @@ border-radius: 5px;
     background-size: 55%;
     left:88%;
     padding: 6px;
+
 }
 
 {
@@ -776,4 +777,9 @@ a
     font-size:20px;
     font-weight: bold;
     text-align: center;
+}
+table
+{
+    font-size: 20px;
+    font-weight: bold;
 }

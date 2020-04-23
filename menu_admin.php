@@ -49,55 +49,110 @@ if (empty($_SESSION))
                         </div>
             </div>
                         <a href="menu_admin.php?page=1">
-                    <div class="choix-page">
+                    <div class="choix-page"
+
+                           <?php  
+            if (isset ($_GET["page"]) && $_GET["page"]==1)
+
+        echo "style='background-color:#D3D3D3;border-left:5px solid green;'";?>>
+    
+
+                    
 
                         <div class="text-choix-page">
                         Liste Questions
 
                     </div>
 
-                        <div class="logo-choix1">
+                        <div class="logo-choix1" 
+    <?php  
+            if (isset ($_GET["page"]) && $_GET["page"]==1)
+
+        echo "style='background-image:url(ic-liste-active.png)'";?>>
                             
                     </div>
                     </div>
                 </a>
                 <a href="menu_admin.php?page=2">
-                    <div class="choix-page">
+                    <div class="choix-page"
+
+
+                    <?php  
+            if (isset ($_GET["page"]) && $_GET["page"]==2)
+
+        echo "style='background-color:#D3D3D3;border-left:5px solid green;'";?>>
+    
+
+                    
 
                         <div class="text-choix-page">
                         Créer Admin
 
                     </div>
 
-                        <div class="logo-choix2">
+                        <div class="logo-choix2"
+
+                        <?php  
+            if (isset ($_GET["page"]) && $_GET["page"]==2)
+
+        echo "style='background-image:url(ic-ajout-active.png)'";?>>
                             
                     </div>
 
                     </div>
                 </a>
                         <a href="menu_admin.php?page=3">
-                    <div class="choix-page">
+                    <div class="choix-page"
+
+                           <?php  
+            if (isset ($_GET["page"]) && $_GET["page"]==3)
+
+        echo "style='background-color:#D3D3D3;border-left:5px solid green;'";?>>
+    
+
+                    
 
                         <div class="text-choix-page">
                         Liste Joueurs
 
                     </div>
 
-                        <div class="logo-choix1">
+                        <div class="logo-choix1"
+
+
+                        <?php  
+            if (isset ($_GET["page"]) && $_GET["page"]==3)
+
+        echo "style='background-image:url(ic-liste-active.png)'";?>>
+    
                             
                     </div>
 
                     </div>
                 </a>
                             <a href="menu_admin.php?page=4">
-                    <div class="choix-page">
+                    <div class="choix-page"
+                        
+                           <?php  
+            if (isset ($_GET["page"]) && $_GET["page"]==4)
+
+        echo "style='background-color:#D3D3D3;border-left:5px solid green;'";?>>
+    
+
                         <div class="text-choix-page">
                         Créer Questions
 
                     </div>
 
-                        <div class="logo-choix2">
-                            
+                        <div class="logo-choix2"
+
+                        <?php  
+            if (isset ($_GET["page"]) && $_GET["page"]==4)
+
+        echo "style='background-image:url(ic-ajout-active.png);'";?>>
+    
+
+                        
                     </div>
 
                     </div>
@@ -131,7 +186,10 @@ if (empty($_SESSION))
                     }
                 }
                 else
+                {
+                    $_GET["page"]=3;
                     require_once('liste_joueur.php');
+                }
                             
                     
                 ?>

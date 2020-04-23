@@ -22,5 +22,16 @@ function five_best_score ($tab_score)
 	return ($tab);
 }
 
+function taille_tab_json ($tab)
+{
+$i=0;
+	foreach ($tab as $key => $value) {
+			foreach ($value as $key2 => $value2) {
+				if ($key2=="score")
+					$i++;
+			}
+	}
 
+		return $i;
+	}
  ?>

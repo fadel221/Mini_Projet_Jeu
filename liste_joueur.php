@@ -1,7 +1,7 @@
 <?php  
 
-if (empty($_SESSION))
-    header('location:index.php.php');
+//if (empty($_SESSION))
+  //  header('location:index.php.php');
 ?>
 
 <!DOCTYPE html>
@@ -19,10 +19,13 @@ if (empty($_SESSION))
 
 
 <?php  
-
+include 'fonctions.php';
 $json=file_get_contents("bd.json");
 $json=json_decode($json,true);
-echo "<table>";
+$nb_joueurs=taille_tab_json($json);
+$nb_pages=ceil($nb_joueurs/2);
+
+echo "<table cellpadding='3px' cellspacing='10px'>";
 echo "<tr>";
 echo "<td>PRENOM</td>";
 echo "<td>NOM</td>";
