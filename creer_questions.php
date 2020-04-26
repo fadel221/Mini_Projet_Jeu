@@ -32,9 +32,9 @@
 					<option>Choix Multiple</option>
 				</select>
 
-				<a href="">
+				<button onclick="alert ('ok');">
 				<img src="ic-ajout-réponse.png" id="icone-ajout-reponse">
-				</a>
+				</button>
 
 			</div>
 

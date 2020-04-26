@@ -34,4 +34,20 @@ $i=0;
 
 		return $i;
 	}
+
+	function reccupere_joueur ($tab)
+	{
+		for ($i=0;$i<=count($tab);$i++)
+		{
+			if (isset($tab[$i]["score"]))
+			{
+				
+				$tab_joueur[]=$tab[$i];
+			}
+		}
+	
+	return ($tab_joueur);
+
+	}
+	
  ?>

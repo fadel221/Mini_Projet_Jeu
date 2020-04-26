@@ -65,7 +65,7 @@
     documentgetElementById("form-connexion").addEventListener("submit",function(e)
     {
         const inputs=document.getElementByTagname("input");
-        var error=false;
+        var error="false";
         for(input of inputs)
         	if (input.hasAttribute("error"))
                  
@@ -73,9 +73,9 @@
                 var idDiverror=input.getAttribute("error");
                 if (!input.value)
                 {
-                document.getElementById(idDivError).innerText="Ce champ est obligatoire"
+                document.getElementById(idDivError).innerText="Ce champ est obligatoire";
             	}
-            error=true;
+            error="true";
             }}
 </script>
 
