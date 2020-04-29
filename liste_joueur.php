@@ -90,11 +90,9 @@ echo "</table>";
 	
 </div>
 <form method="post">
-	<?php 
-	echo" 
-	<a href='menu_admin.php?num_pages=".($page_actuelle+1)."'><input class='next-btn' type='submit' value='Suivant' name='suivant'></a>
-	";
-	?> 
+	 
+	<a href="menu_admin.php?num_pages=<?php echo $page_actuelle++;?>"><input class='next-btn' type='submit' value='Suivant' name='suivant'></a>
+	 
 </form>
 </body>
 </html>

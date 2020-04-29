@@ -19,6 +19,7 @@ function five_best_score ($tab_score)
 		$tab[]=$max;
 		unset($tab_score[$indice]);
 	}
+	
 	return ($tab);
 }
 
@@ -49,5 +50,22 @@ $i=0;
 	return ($tab_joueur);
 
 	}
-	
+
+	function trouve_best_players($json,$tab)
+	{
+		for ($j=0;$j<5;$j++)
+			{
+				for ($i=0;$i<count($json);$i++)
+				{
+					if (isset($json[$i]["score"]))
+					{
+					if ($json[$i]["score"]==$tab[$j])
+					{
+						$tab_best_player[]=$json[$i]["username"]." ".$json[$i]["nom"];
+					}
+				}
+			}
+			}
+			return ($tab_best_player);
+	}
  ?>

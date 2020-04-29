@@ -132,21 +132,26 @@ if (!empty($_POST["cree_compte"]))
         file_put_contents("bd.json",$json);
         header('Location:index.php.php');
         }
+        else
+
             echo "<script>
             alert('Seul les formats PNG et JPEG');
                 </script>";
 
         }
+        else
         echo "<script>
             alert('Les mots de passe doivent etre identiques');
                 </script>
         ";
         
     }
+    else
     echo "<script>
             alert('Le login existe');
                 </script>";
             }
+            else
     echo "<script>
             alert('Tout les champs sont obligatoires');
                 </script>";

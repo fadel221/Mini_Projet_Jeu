@@ -8,11 +8,16 @@
 
 </body>
 </html>
-
+<table>
+	<td></td>
 <?php 
 if (!empty($_SESSION))
 {
-	echo $_SESSION["score"];
+	echo "<tr>";
+	echo "<td align='center'>".$_SESSION["score"]."</td>";
+	echo "</tr>";
 }
-
+else
+header('Location:index.php.php');
  ?>
+ </table>

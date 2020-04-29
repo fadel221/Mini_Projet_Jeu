@@ -209,9 +209,17 @@ if (empty($_SESSION))
 
     if (isset($_POST["deconnect"]) && !empty($_POST["deconnect"]))
 {
+echo "
+<script>
+if (confirm('Voulez vous déconnectez ?'))
+    document.location.href='index.php.php'
+    else
+        document.location.href='menu_admin.php'
+        
+</script>";
     unset($_SESSION);
     session_destroy();
-    header('location:index.php.php');
+
 
 }
 ?>

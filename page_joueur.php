@@ -92,12 +92,26 @@ echo $_SESSION["username"]." ".$_SESSION["nom"]
                             
                             <div class="menu-score">
                                 
-                            <div class="menu-score1">
+                            <div class="menu-score1" 
+
+                                      <?php  
+            if (isset ($_GET["page"]) && $_GET["page"]==1)
+
+        echo "style='background-color:darkturquoise;color:brown;border:1px solid black;border-radius:5px;'";?>>
+                            
                             
                             <a href="page_joueur.php?page=1">Top Score</a>        
                                 </div>
 
-                                <div class="menu-score2">
+                                <div class="menu-score2"
+
+                                <?php  
+            if (isset ($_GET["page"]) && $_GET["page"]==2)
+
+        echo "style='background-color:silver;color:brown;border:1px solid black;border-radius:5px;'";?>>
+
+
+                                
                             
                             <a href="page_joueur.php?page=2">Mon meilleur score</a>        
                                 </div>
@@ -110,19 +124,15 @@ echo $_SESSION["username"]." ".$_SESSION["nom"]
 
         if (!empty($_GET["page"]))
         {
-            switch ($_GET["page"]) {
-                case '1':{
-                    require_once('Top_score.php');
-                    break;
-                    }
+            if ($_GET["page"]=='1')
+                require('Top_score.php');
 
-                case '2':{
-                    require_once('best_player_score.php');
-                    break;
-                    }
-                }
+            else if($_GET["page"]=='2')
+                require('best_player_score.php');
+        }
 
-                }
+            else
+                require('best_player_score.php');
                 
                 
                 ?>
@@ -157,7 +167,15 @@ if (isset($_POST["deconnect"])&& !empty($_POST["deconnect"]))
 
 {
 	session_destroy();
-	header('location:index.php.php');
+
+    echo "
+<script>
+if (confirm('Voulez vous déconnectez ?'))
+
+    document.location.href='index.php.php'
+
+</script>";
+
 }
 
 
