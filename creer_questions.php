@@ -12,11 +12,11 @@
 	<form method="post" id="form-questions">
 	<div class="element-question">
 		<label for="textarea">Question</label>
-		<textarea  id="textarea-questions" name="question" cols="40px" rows="6px"></textarea>
+		<textarea  id="textarea-questions" name="question" cols="40px" rows="6px" required='required'></textarea>
 	</div>
 	<div class="element-question">
 		<label for="nb-point">Nbre de Points</label>
-		<input type="number" id="nb-points"name="nb-point" min="1">
+		<input type="number" required="required" id="nb-points"name="nb-point" min="1">
 	</div>
 	<div class="element-question" >
 		<label for="select">Type de Réponse</label>
@@ -59,20 +59,20 @@ var select=document.getElementById('select');
 			case "Donner le type de réponse":newInput.innerHTML='';num=1;
 			break;
 
-			case "Texte à Saisir":newInput.innerHTML='<input type="text" class="champ-js" name="question_simple">';
+			case "Texte à Saisir":newInput.innerHTML='<input type="text" class="champ-js" name="question_simple" required="required">';
 					parent.innerHTML="";
 						parent.appendChild(newInput);break;
 			
 				case "Choix Multiple": 
 				num=1;
-				newInput.innerHTML='<input type="text" name="reponse_multiple_'+num+'"class="champ-js" id="input_'+num+'"><input type="checkbox" class="btn_check" name="check_'+num+'"><button type="button" class="btn_supp" onclick="DeleteInput(${num})"></button>';
+				newInput.innerHTML='<input type="text" name="reponse_multiple_'+num+'"class="champ-js" id="input_'+num+'" required="required"><input type="checkbox" class="btn_check" name="check_'+num+'"><button type="button" class="btn_supp" onclick="DeleteInput(${num})"></button>';
 					parent.innerHTML="";
 					parent.appendChild(newInput);
 					break;
 
 					case "Choix Simple": 
 				num=1;
-				newInput.innerHTML='<input class="champ-js" type="text" name="reponse_simple_'+num+'"><input type="radio" class="btn_radio" id="input_'+num+'" name="radio" value="reponse_simple_'+num+'"><button type="button" class="btn_supp" onclick="DeleteInput(${num})"></button>';
+				newInput.innerHTML='<input class="champ-js" type="text" required="required" name="reponse_simple_'+num+'"><input type="radio" class="btn_radio" id="input_'+num+'" name="radio" value="reponse_simple_'+num+'"><button type="button" class="btn_supp" onclick="DeleteInput(${num})"></button>';
 					parent.innerHTML="";
 					parent.appendChild(newInput);
 					break;
@@ -86,11 +86,11 @@ var select=document.getElementById('select');
 					switch (select.value)
 					{
 						case "Choix Simple":
-			 input.innerHTML='<input id="input_'+num+'" class="champ-js" type="text" name="reponse_simple_'+num+'"><input type="radio" class="btn_radio" name="radio" value="reponse_simple_'+num+'"><button type="button" class="btn_supp" onclick="DeleteInput(${num})"></button>';break;
+			 input.innerHTML='<input id="input_'+num+'" class="champ-js" required="required" type="text" name="reponse_simple_'+num+'"><input type="radio" class="btn_radio" name="radio" value="reponse_simple_'+num+'"><button type="button" class="btn_supp" onclick="DeleteInput(${num})"></button>';break;
 
 
 			 		case "Choix Multiple":
-							input.innerHTML='<input type="text" name="reponse_multiple_'+num+'"class="champ-js" id="input_'+num+'"><input type="checkbox" class="btn_check" name="check_'+num+'"><button type="button" class="btn_supp" onclick="DeleteInput(${num})"></button>';
+							input.innerHTML='<input type="text" name="reponse_multiple_'+num+'"class="champ-js" id="input_'+num+'" required="required"><input type="checkbox" class="btn_check" name="check_'+num+'"><button type="button" class="btn_supp" onclick="DeleteInput(${num})"></button>';
 								break;
 								}	 		
 					parent.appendChild(input);
@@ -120,6 +120,7 @@ btn.addEventListener('submit',function(e)
 unset($_POST["record"]);
 $json=file_get_contents("questions.json");
 $json=json_decode($json,true);
+
 $json[]=$_POST;
 $json=json_encode($json);
 file_put_contents("questions.json",$json);
