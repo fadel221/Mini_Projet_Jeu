@@ -14,24 +14,23 @@
 			<div class="container-body">
 				<form method="post" action="" id="form-connexion">
 				<div class="input-form">
-				<input type="text" class="form-control"name="login" error="error-1">
+				<input type="text" class="form-control" name="login" id="Input1">
 				<div class="icone-form icon-form-login">
 				
 				</div>
 				</div>
-				<div class="error-form" error="error-1">
-				*Ce champ est obligatoire
+				<div id="error-form1" class="error-form">
 				
 				
 				</div>
 
 				<div class="input-form">
-				<input type="password" class="form-control" name="password" error="error-2">
+				<input type="password" class="form-control" name="password" id="Input2">
 				<div class="icone-form icon-form-pwd">
 				
 				</div>
 				</div>
-				<div class="error-form" error="error-2">*Ce champ est obligatoire
+				<div id="error-form2" class="error-form">
 				</div>
 
 				<div class="input-form">
@@ -46,37 +45,22 @@
 </body>
 
 <script>
-	alert ('ok');
-	const inputs=document.getElementByTagname("input");
-	for (input of inputs)
-	{
-		input.addEventListener("keyup",function(e){
-			if (e.target.hasAttribute("error"))
+
+	var form=document.getElementById('form-connexion');
+	form.addEventListener('submit',function(e){
+		var login=document.getElementById('Input1');
+		var password=document.getElementById('Input2');
+			if (login.value.trim()=="" || password.value.trim()=="")
 			{
-				var idDiverror=input.getAttribute("error");
-				document.getElementById(idDiverror).innerTexte"Ce champ est obligatoire";
+				var myError1=document.getElementById('error-form1');
+				var myError2=document.getElementById('error-form2');
+				myError1.innerHTML="Ce champ est obligatoire";
+				myError2.innerHTML="Ce champ est obligatoire";
+				e.preventDefault();
 			}
-		})
-			}
-		
+	})
 	
-
-
-    documentgetElementById("form-connexion").addEventListener("submit",function(e)
-    {
-        const inputs=document.getElementByTagname("input");
-        var error="false";
-        for(input of inputs)
-        	if (input.hasAttribute("error"))
-                 
-            {
-                var idDiverror=input.getAttribute("error");
-                if (!input.value)
-                {
-                document.getElementById(idDivError).innerText="Ce champ est obligatoire";
-            	}
-            error="true";
-            }}
+	
 </script>
 
 </html>
@@ -120,12 +104,6 @@ if (isset($_POST["sub"]))
 
 	
 }
-else
-		echo "
-		<script>
-			alert ('Le login et le Mot de Passe sont obligatoires' );
-		</script>
-		";
 
 
 ?>

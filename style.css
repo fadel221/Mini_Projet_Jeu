@@ -111,7 +111,6 @@ margin: 5px 35px;
     font-size:15px;
     font-weight: bold;
     left:50px;
-    
 }
 .submit-btn
 {
@@ -184,14 +183,14 @@ padding: 30px;
 }
 .menu-container
 {
-    
+    top:8%;
     width:30%;
-    height: 75%;
-    margin-top: 2%;
+    height: 70%;
     position: relative;
     display:inline-block;
     border-radius: 5px;
     background-color: white;
+    left:3%;
 }
 .header-menu-container
 {
@@ -212,7 +211,7 @@ border-radius: 5px;
 }
 .choix-page
 {
-    
+    position: relative;
     font-size:25px;
     font-weight: lighter;
     color:black;
@@ -265,9 +264,12 @@ border-radius: 5px;
 
     position: absolute;
     display: inline-block;
-    width:70%;
-    height: 81%;
+    width: 57%;
+    height: 71%;
+    background-color: white;
+    left: 36%;
 }
+textarea-questions
 .header-list
 {
     font-size:  30px;
@@ -397,8 +399,10 @@ bottom: 10%;
 }
 label
 {
-    position: relative;
-    top:10px;
+    position: absolute;
+    top: 39px;
+    font-size: 20px;
+    font-weight: bold;
 }
 .file-form
 {
@@ -485,24 +489,23 @@ input[type="password"]
 
 .container-creation-question
 {
-    width: 65%;
-    height: 80%;
+    width: 85%;
+    height: 91%;
     border: 2px solid skyblue;
     border-radius: 20px;
     position: relative;
-    margin:auto;
+    margin: auto;
 }  
 
 .header-container-creation-question
 {
     width:100%;
-    height: 10%;
+    height: 5%;
     font-size:35px;
     font-weight:bold;
     margin: auto;
-    color:skyblue;
+    color:darkturquoise;
     text-align: center;
-
 }
 
 .form-creation-question
@@ -515,31 +518,32 @@ input[type="password"]
 
 #textarea-questions
 {
-    margin-top: 2%;
+    top: 6%;
     position: relative;
-    left: 17%;
+    left: 22%;
     background-color: silver;
     border-color: skyblue;
 }
 
+.element-question
+{
+    width: 100%;
+    height: 17%;
+    position: relative;
+}
 #label-questions
 {
     position: absolute;
     margin-top:6%;
 }
 
-.nb-point
-{
-    width:100%;
-    height: 20%;
-    margin-top:4%;
-}
 
 #nb-points
 {
-    width:12%;
-    height: 100%;
-    margin-left:5%;
+    width:20%;
+    height: 30%;
+    left:30%;
+    top: 30%;
     background-color:silver;
     border-color: skyblue;
     position: relative;
@@ -552,15 +556,28 @@ input[type="password"]
     margin-top:4%;
     position: relative;
     display: inline-block;
+
 }
+
+#champ-reponse
+{
+    border:2px solid black;
+    width: 100%;
+    height: 50%;
+    position: absolute;
+    overflow: scroll;
+    margin-bottom: 3%;
+}
+
 #select
 {
-    height: 56%;
-    width: 67%;
-    margin-left: 5%;
+    height: 40%;
+    width: 51%;
+    margin-left: 29%;
     background-color: silver;
     position: absolute;
     display: inline-block;
+    top: 21%;
 }
 #icone-ajout-reponse
 {
@@ -762,6 +779,7 @@ input[type="password"]
     font-weight: bold;
     color:brown;
     text-align: center;
+
 }
 
 a
@@ -798,76 +816,70 @@ table
 
 .btn_ajout
 {
-    width:10%;
-    height: 54%;
+    width:8%;
+    height: 40%;
     background-image:url('ic-ajout-réponse.png');
     background-repeat: no-repeat;
     background-size: 100%;
     border-radius: 5px;
     cursor: pointer;
     display: inline-block;
-    position: absolute;
-    margin-left: 79%;
+    position:absolute;
+    left:85% ;
+    top:21%;
 }
 
 .btn_check
 {
-    display: inline-block;
-    width: 10%;
-    height: 50%;
+        display: inline-block;
+    width: 5%;
+    height: 45%;
     position: relative;
     border: 2px solid yellow;
-    margin-left: 67%;
-    margin-top: 1%;
+    left: 20%;
+    top: 13%;
 }
 .btn_radio
 {
-    width:10%;
+    width: 10%;
     height: 50%;
     position: relative;
-    margin-top: 1%;
+    left: 20%;
+    top: 14%;
 }
 
 .btn_supp
 {
-    width:5%;
+    width: 5%;
     height: 51%;
     position: relative;
-    margin-top: 1%;
     background-repeat: no-repeat;
-    background-image:url('ic-supprimer.png');
+    background-image: url(ic-supprimer.png);
     background-size: 100%;
+    left: 25%;
+    top: 13%;
+    background-color: white;
 }
 
 .row
 {
     margin-top:5%;
-    width: 132%;
-    height: 100%;
+    width: 100%;
+    height: 30%;
     position:relative;
 }
 
-.container-champ-js
+
+
+.champ-js
 {
-    width:100%;
-    height: 100%;
-    border:2px solid pink;
+    width: 52%;
+    height: 70%;
     position: relative;
     display: inline-block;
-    margin-top:3%;
-}
-
-#champ-js
-{
-    width:50%;
-    height: 50%;
-    position:absolute;
-    display: inline-block;
-    border: 2px skyblue;
-    margin-left: 17%;
-    margin-top: 2%;
     border-radius: 5px;
-
+    background-color: silver;
+    left: 10%;
 }
 #labels
 {
@@ -878,27 +890,36 @@ table
 
 .record
 {
-    top: 90%;
-    position: absolute;
+    
+    position: relative;
     display: inline-block;
     width:25%;
     height: 8%;
-    
+    left: 74%;
 }
 
 input[name="record"]
 {
     width: 100%;
-    height: 100%;
+    height: 98%;
     background-color: darkturquoise;
-    font-size:20px;
+    font-size: 25px;
     font-weight: bold;
-    color:white;
-    margin-right: 2%;
+    color: white;
+    position: relative;
 }
 
 .couleur
 {
     border-top: 2px solid skyblue;
     background-color: blue;
+}
+
+.newInput
+{
+    width:100%;
+    height: 40%;
+    position: relative;
+    border:2px solid black;
+    overflow: auto;
 }

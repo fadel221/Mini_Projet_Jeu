@@ -1,118 +1,126 @@
 <!DOCTYPE html>
 <html>
-<meta charset="utf-8">
 <head>
-	<link rel="stylesheet"  href="style.css">
-	<title>Menu Creation questions</title>
+	<title>Creation Questions</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-
-<div class="header-container-creation-question">
+	<div class="header-container-creation-question">
 		PARAMETRER VOTRE QUESTION
 	</div>
-
 <div class="container-creation-question">
-	<div class="form-creation-question">
-		<form method="post">
-			<div>
-			<label id="label-questions">Questions</label>
-			<textarea name="questions" cols="50px" rows="7px" id="textarea-questions">
-				
-			</textarea>
-			</div>
+	<form method="post" id="form-questions">
+	<div class="element-question">
+		<label for="textarea">Question</label>
+		<textarea  id="textarea-questions" name="question" cols="40px" rows="6px"></textarea>
+	</div>
+	<div class="element-question">
+		<label for="nb-point">Nbre de Points</label>
+		<input type="number" id="nb-points"name="nb-point" min="1">
+	</div>
+	<div class="element-question" >
+		<label for="select">Type de Réponse</label>
+		<select name="type-reponse" id="select" onclick="DoEvent()">
+				<option>Donner le type de réponse</option>
+				<option value="Texte à Saisir">Texte à Saisir</option>
+				<option value="Choix Simple">Choix Simple</option>
+				<option value="Choix Multiple">Choix Multiple</option>
+		</select>
 
-			<div class="nb-point">
-				<label for="nb-points">Nbre de Points</label>
-				<input type="number" name="nb-points" id="nb-points">
-			</div>
+		<div class="btn_ajout" onclick="AddChampQuestionSimple()">
+			
+		</div>
 
-			<div id="type-reponse">
-				<label>Type de réponses</label>
-				<select name="type-reponse" id="select" value="bcwd w">
-					<option>Choix Simple</option>
-					<option>Choix Multiple</option>
-					<option>Texte à Saisir</option>
-				</select>
-				<button type="button" class="btn_ajout" onclick="AddInput()">
-				</button>
+	</div>
 
-				</div>
-				<div class="record">
-			<input type="submit" name="record" value="Enregistrer">
-			</div>
-			</div>
-				 
-				
-				
+	<div class="newInput" id="parent">
 		
-		
-
-		
-<script>
-	var nb=0;
-	function AddInput() 
-	{
-		nb++;
-		var divInputs=document.getElementById('type-reponse');
-		var newInput=document.createElement('div');
-		newInput.setAttribute('class','row');
-		newInput.setAttribute('id','row_'+nb);
-		newInput.innerHTML='<label id="labels">Réponse '+nb+'</label><input type="text" name="rep_'+nb+'" id="champ-js"><input type="checkbox" class="btn_check" name="check_'+nb+'"><input type="radio" name="radio_'+nb+'" class="btn_radio"><button class="btn_supp" onclick="DeleteInput(${nb})"></button>';
-		divInputs.appendChild(newInput);
-	}
-
-	function DeleteInput(n)
-	{
-		var target=document.getElementById('row_'+n);
-		target.remove();
-	}
-</script>	
-
+	</div>
+	<div class="record">
+		<input type="submit" name="record" value="Enregistrer" id="record" submit=';'>
+	</div>
 </form>
+</div>
 </body>
 </html>
 
 
-<?php 
-if (isset($_POST["record"])&& !empty($_POST["record"]))
-{
-	if (isset($_POST["questions"])&& !empty($_POST["questions"]))
+<script>
+var num=1;
+var select=document.getElementById('select');	
+		var newInput=document.createElement('div');
+		var parent = document.getElementById('parent');
+		newInput.setAttribute('class','row');
+	function DoEvent()
 	{
-		if (isset($_POST["nb-points"]) && !empty($_POST["nb-points"]))
-
+		
+		switch (select.value)
 		{
-			if ($_POST["nb-points"]>=1)
-			{
-				if (isset($_POST["type-reponse"]) && !empty($_POST["type-reponse"]))
-				{
-					$json=file_get_contents("questions.json");
-					$json=json_decode($json,true);
-					$json[]=$_POST;
-					$json=json_encode($json);
-					file_put_contents("questions.json",$json);
-				}
-				else
-				echo "<script>
-            alert('Saisissez le type de réponses');
-                </script>";
-			}
-			else
-			echo "<script>
-            alert('Le nombre doit etre supérieur ou égale à 1');
-                </script>";
+			case "Donner le type de réponse":newInput.innerHTML='';num=1;
+			break;
+
+			case "Texte à Saisir":newInput.innerHTML='<input type="text" class="champ-js" name="question_simple">';
+					parent.innerHTML="";
+						parent.appendChild(newInput);break;
+			
+				case "Choix Multiple": 
+				num=1;
+				newInput.innerHTML='<input type="text" name="reponse_multiple_'+num+'"class="champ-js" id="input_'+num+'"><input type="checkbox" class="btn_check" name="check_'+num+'"><button type="button" class="btn_supp" onclick="DeleteInput(${num})"></button>';
+					parent.innerHTML="";
+					parent.appendChild(newInput);
+					break;
+
+					case "Choix Simple": 
+				num=1;
+				newInput.innerHTML='<input class="champ-js" type="text" name="reponse_simple_'+num+'"><input type="radio" class="btn_radio" id="input_'+num+'" name="radio" value="reponse_simple_'+num+'"><button type="button" class="btn_supp" onclick="DeleteInput(${num})"></button>';
+					parent.innerHTML="";
+					parent.appendChild(newInput);
+					break;
 		}
-		else
-		echo "<script>
-            alert('Saisissez le nombre de points');
-                </script>";
-	}
-	else
-	echo "<script>
-            alert('Saisissez la question');
-                </script>";
 }
+		function AddChampQuestionSimple()
+		{
+			var input=document.createElement('div');
+			input.setAttribute('class','row');
+			num++;
+					switch (select.value)
+					{
+						case "Choix Simple":
+			 input.innerHTML='<input id="input_'+num+'" class="champ-js" type="text" name="reponse_simple_'+num+'"><input type="radio" class="btn_radio" name="radio" value="reponse_simple_'+num+'"><button type="button" class="btn_supp" onclick="DeleteInput(${num})"></button>';break;
+
+
+			 		case "Choix Multiple":
+							input.innerHTML='<input type="text" name="reponse_multiple_'+num+'"class="champ-js" id="input_'+num+'"><input type="checkbox" class="btn_check" name="check_'+num+'"><button type="button" class="btn_supp" onclick="DeleteInput(${num})"></button>';
+								break;
+								}	 		
+					parent.appendChild(input);
+		}
+	
+	function DeleteInput(n)
+	{
+		alert('ok');
+		 var target=document.getElementById('input_'+n);
+		 target.remove();
+	}
+var btn=document.getElementById('form-questions');
+btn.addEventListener('submit',function(e)
+		{
+			if (select.value=="Donner le type de réponse") 
+	{ 
+		e.preventDefault();
+	}
+});
+	
+
+</script>
 
 
 
+<?php  
+unset($_POST["record"]);
+$json=file_get_contents("questions.json");
+$json=json_decode($json,true);
+$json[]=$_POST;
+$json=json_encode($json);
+file_put_contents("questions.json",$json);
 ?>
-
