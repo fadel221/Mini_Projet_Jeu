@@ -34,7 +34,7 @@
                         <form method="post" enctype="multipart/form-data">
                         <div class="form-inscription">
 
-                            <label for="username"><p>Prenom</p></label>
+                            <label id="Label" for="username"><p>Prenom</p></label>
 
                             <input type="text" name="username" class="input-form-inscription">
                         </div>
@@ -42,25 +42,25 @@
                         
                         <div class="form-inscription">
 
-                            <label for="nom"><p>Nom</p></label>
+                            <label id="Label" for="nom"><p>Nom</p></label>
                         <input type="text" name="nom"  class="input-form-inscription">
                         </div>
                             <div class="form-inscription">
-                        <label for="login"><p>Login</p></label>
+                        <label id="Label" for="login"><p>Login</p></label>
                         <input type="text" name="login"  class="input-form-inscription">
                         </div>
 
                         <div class="form-inscription">
-                        <label for="password"><p>Password</p></label>
+                        <label id="Label" for="password"><p>Password</p></label>
                         <input type="password" name="password" class="input-form-inscription">
 
                         </div>
                         <div class="form-inscription">
-                            <label for="conf_pass"><p>Confirmer Password</p></label>
+                            <label id="Label" for="conf_pass"><p>Confirmer Password</p></label>
 
                         <input type="password" name="conf_pass" class="input-form-inscription">
                         </div>
-                        
+                        Avatar
                                
                         <input type="file" name="img" class="file-form" value="Choisir un fichier">
                         

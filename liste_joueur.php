@@ -24,20 +24,25 @@ $json=file_get_contents("bd.json");
 $json=json_decode($json,true);
 $tab_joueur=reccupere_joueur($json);
 $nb_joueurs=taille_tab_json($json);
-$nb_pages=ceil($nb_joueurs/15);
 define("NBRE_VAL_PAGE",15);
-	
-	for ($i=1;$i<=$nb_pages;$i++)
-		echo "<a href='menu_admin.php?num_pages=$i'>[".$i."] </a>";
+$nb_pages=ceil($nb_joueurs/NBRE_VAL_PAGE);
 
-echo "<table cellpadding='3px' cellspacing='10px'>";
+		
+	
+
+echo "<table align='center' cellpadding='3px' cellspacing='25px'>";
 echo "<tr>";
 echo "<td>PRENOM</td>";
+echo "<td></td>";
 echo "<td>NOM</td>";
+echo "<td></td>";
 echo "<td>SCORE</td>";
+echo "<td></td>";
 echo "</tr>";
-if (isset($_GET["num_pages"]))
+if (isset($_GET["num_pages"]) && !empty($_GET["num_pages"]))
 {
+	if ($_GET["num_pages"]>$nb_pages)
+		$_GET["num_pages"]=1;
 	$page_actuelle=$_GET["num_pages"];
 	$indice_dep=($page_actuelle-1)*NBRE_VAL_PAGE;
 	$indice_fin=($page_actuelle)*NBRE_VAL_PAGE;
@@ -49,11 +54,15 @@ for ($i=$indice_dep;$i<$indice_fin;$i++)
 	{
 echo "<tr>";
 echo "<td>".$tab_joueur[$i]["username"]." </td>";
+echo "<td></td>";
 echo "<td>".$tab_joueur[$i]["nom"]." </td>";
+echo "<td></td>";
 echo "<td>".$tab_joueur[$i]["score"]." </td>";
+echo "<td></td>";
 echo "</tr>";
 }
 }
+
 echo "</table>";
 
 
@@ -65,7 +74,7 @@ else
 		$indice_dep=($page_actuelle-1)*NBRE_VAL_PAGE;
 		$indice_fin=($page_actuelle)*NBRE_VAL_PAGE;
 	
-		echo "<table cellpadding='3px' cellspacing='10px'>";
+		echo "<table align='center' cellpadding='3px' cellspacing='25px'>";
 
 	for ($i=$indice_dep;$i<$indice_fin;$i++)
 	{
@@ -73,12 +82,16 @@ else
 	{
 	echo "<tr>";
 	echo "<td>".$tab_joueur[$i]["username"]." </td>";
+	echo "<td></td>";
 	echo "<td>".$tab_joueur[$i]["nom"]." </td>";
+	echo "<td></td>";
 	echo "<td>".$tab_joueur[$i]["score"]." </td>";
+	echo "<td></td>";
 	echo "</tr>";
 	}
 }
 echo "</table>";
+		
 
 	}
 
@@ -89,9 +102,17 @@ echo "</table>";
 
 	
 </div>
+
+<div >
+	<?php  
+	echo "<a href='menu_admin.php?num_pages=".($page_actuelle+1)."'><input type='submit' class='next-btn 'value='suivant'></a>";
+
+	?>
+</div>
+
 <form method="post">
 	 
-	<a href="menu_admin.php?num_pages=<?php echo $page_actuelle++;?>"><input class='next-btn' type='submit' value='Suivant' name='suivant'></a>
+	
 	 
 </form>
 </body>

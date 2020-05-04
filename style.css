@@ -269,49 +269,52 @@ border-radius: 5px;
     background-color: white;
     left: 36%;
 }
-textarea-questions
 .header-list
-{
-    font-size:  30px;
-    font-weight: bold;
-    color:black;
-
+{ 
+    font-size:31px;
+    font-weight:bold;
 }
+
+
+
 .container-list
 {
 margin:auto;
 width: 70%;
 height: 80%;
-border: 1px solid skyblue;
+border: 2px solid skyblue;
 border-radius: 10px;
 position: relative;
 font-size:30px;
 font-weight: bold;
 text-align: center;
+overflow: auto;
 }
 .container-list2
 {
  margin:auto;
-width: 93%;
-height: 80%;
-border: 1px solid skyblue;
-border-radius: 10px;
-position: relative;   
-bottom: 10%;
-overflow: auto;
-}
+ width: 93%;
+ height: 80%;
+ border: 1px solid skyblue;
+ border-radius: 10px;
+ position: relative;
+ bottom: 10%;
+ overflow: auto;
+ background-color: lightseagreen;
+ }
+
 .next-btn
 {
     background-color: darkturquoise;
-    width:15%;
-    height: 5%;
+    width: 19%;
+    height: 7%;
     color: white;
     font-size: 20px;
     font-weight: bold;
     cursor: pointer;
-    position: relative;
-    left: 70%;
-    bottom: 60px;
+    position: absolute;
+    left: 78%;
+    top: 92%;
 
 }
 .container_nb_question
@@ -328,11 +331,15 @@ overflow: auto;
 {
     width:20%;
     height: 20%;
+    position: relative;
+    display: inline-block;
+    left:77%;
 }
 .btn-nb-question
 {
     background-color: blue;
-
+    position: absolute;
+    left:100%;
 }
 
 
@@ -400,10 +407,7 @@ overflow: auto;
 }
 label
 {
-    position: absolute;
-    top: 39px;
-    font-size: 20px;
-    font-weight: bold;
+    font-size:20px;
 }
 .file-form
 {
@@ -537,19 +541,16 @@ input[type="password"]
     position: absolute;
     margin-top:6%;
 }
-
-
 #nb-points
 {
-    width:20%;
+    width: 12%;
     height: 30%;
-    left:30%;
-    top: 30%;
-    background-color:silver;
+    left: 30%;
+    top: 21%;
+    background-color: silver;
     border-color: skyblue;
     position: relative;
 }
-
 #type-reponse
 {
     width: 75%;
@@ -922,4 +923,34 @@ input[name="record"]
     height: 40%;
     position: relative;
     overflow: auto;
+}
+input[type="radio"]
+{
+    background-color: red;
+    color: skyblue;
+    background-size: 100%;
+
+}
+#Label
+{
+    font-size:20px;
+}
+#label-question
+{
+    position: absolute;
+    top:30px;
+    font-size:20px;
+    font-weight:bold;
+}
+
+.btn-pagination
+{
+    border: 2px solid black;
+    position: absolute;
+}
+
+#text-nbpage-question
+{
+    color:black;
+    position: absolute;
 }

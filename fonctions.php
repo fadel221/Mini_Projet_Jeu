@@ -68,4 +68,29 @@ $i=0;
 			}
 			return ($tab_best_player);
 	}
+
+	function reccupere_reponse_simple($json)
+		{
+				foreach ($json as $key => $element) {
+					
+					if (!($key=="nb-point" || $key=="question" || $key=="radio" || $key=="type-reponse"))
+												$tab_reponses[]=$element;
+				}
+
+				return $tab_reponses;
+			}
+		
+function reccupere_cle_reponse_simple($json)
+		{
+				foreach ($json as $key => $element) {
+					
+					if (!($key=="nb-point" || $key=="question" || $key=="radio" || $key=="type-reponse"))
+												$tab_cle_reponses[]=$key;
+				}
+
+				return $tab_cle_reponses;
+			}
+
+			
+
  ?>

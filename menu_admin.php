@@ -211,14 +211,21 @@ if (empty($_SESSION))
 {
 echo "
 <script>
-if (confirm('Voulez vous déconnectez ?'))
-    document.location.href='index.php.php'
+if (!confirm('Voulez vous déconnectez ?'))
+{
+    document.location.href='menu_admin.php';
+        }
     else
-        document.location.href='menu_admin.php'
-        
+        {";
+unset($_SESSION);
+session_destroy();
+echo "document.location.href='index.php.php';
+
+}
+
 </script>";
-    unset($_SESSION);
-    session_destroy();
+
+    
 
 
 }
