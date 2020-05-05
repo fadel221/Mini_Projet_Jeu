@@ -27,7 +27,7 @@ else
 
  $json=json_encode($json);
 
-		file_put_contents("question.json",$json);
+		file_put_contents("questions.json",$json);
 ?>
 
 <!DOCTYPE html>
