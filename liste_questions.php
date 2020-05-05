@@ -16,18 +16,23 @@ if (isset($_POST["OK"]) && !empty($_POST["OK"]))
 {
 	if (isset($_POST["question"]) && !empty($_POST["question"]))
 	{
-			$json[0]["nb_questions_par_jeu"]=(int)$_POST["question"];
-		 $_SESSION["nb_questions_par_jeu"]=(int)$_POST["question"];
+		if ($_POST["question"]>=5)
+		{
+			$json[0]["nb_questions_par_jeu"]=$_POST["question"];
+		 $_SESSION["nb_questions_par_jeu"]=$_POST["question"];
 		 $json=json_encode($json);
 		 file_put_contents("questions.json",$json);
 	}
 }
+}
 else
+{
 	$_SESSION["nb_questions_par_jeu"]=$json[0]["nb_questions_par_jeu"];
 
  $json=json_encode($json);
 
 		file_put_contents("questions.json",$json);
+	}
 ?>
 
 <!DOCTYPE html>
@@ -212,7 +217,6 @@ else
 			msg.innerHTML="Le nombre de questions par jeu est au minimum 5";
 			msg.style.color="red";
 			div.appendChild(msg);
-			input.value=5;
 			alert("Le nombre de questions par jeu est au minimum 5");
 		}
 		else
