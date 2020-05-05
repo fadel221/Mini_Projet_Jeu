@@ -121,13 +121,13 @@ else
 
 															$_GET["numero_page"]=1;
 															$page_actuelle=$_GET["numero_page"];
-															$indice_debut=($page_actuelle-1)*NB_QUESTION_PAGE;
-															$indice_fin=($page_actuelle)*NB_QUESTION_PAGE;
+															$indice_debut=(($page_actuelle-1)*NB_QUESTION_PAGE)+1;
+															$indice_fin=(($page_actuelle)*NB_QUESTION_PAGE)+1;
 																for ($i=$indice_debut;$i<$indice_fin;$i++)
 																{
 																			if ($i==0)
 																				continue;
-
+																		
 																	switch($json[$i]["type-reponse"])
 																	{
 
