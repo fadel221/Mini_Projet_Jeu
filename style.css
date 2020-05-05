@@ -280,7 +280,7 @@ border-radius: 5px;
 .container-list
 {
 margin:auto;
-width: 70%;
+width: 75%;
 height: 80%;
 border: 2px solid skyblue;
 border-radius: 10px;
@@ -309,12 +309,27 @@ overflow: auto;
     width: 19%;
     height: 7%;
     color: white;
-    font-size: 20px;
+    font-size: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    left: 65%;
+    top:  88%;
+
+}
+
+.next-btn-question
+{
+    background-color: darkturquoise;
+    width: 19%;
+    height: 7%;
+    color: white;
+    font-size: 25px;
     font-weight: bold;
     cursor: pointer;
     position: absolute;
     left: 78%;
-    top: 92%;
+    top: 102%;
 
 }
 .container_nb_question
@@ -424,7 +439,7 @@ label
     position: absolute;
     display: inline-block;
     background-color: skyblue;
-    width: 38%;
+    width: 43%;
     height: 8%;
     font-size: 20px;
     color:white;

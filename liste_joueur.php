@@ -23,6 +23,7 @@ include 'fonctions.php';
 $json=file_get_contents("bd.json");
 $json=json_decode($json,true);
 $tab_joueur=reccupere_joueur($json);
+$tab_joueur=trie_decroissant_score($tab_joueur);
 $nb_joueurs=taille_tab_json($json);
 define("NBRE_VAL_PAGE",15);
 $nb_pages=ceil($nb_joueurs/NBRE_VAL_PAGE);
@@ -105,7 +106,7 @@ echo "</table>";
 
 <div >
 	<?php  
-	echo "<a href='menu_admin.php?num_pages=".($page_actuelle+1)."'><input type='submit' class='next-btn 'value='suivant'></a>";
+	echo "<a href='menu_admin.php?num_pages=".($page_actuelle+1)."'><input type='submit' class='next-btn 'value='Suivant'></a>";
 
 	?>
 </div>

@@ -23,7 +23,7 @@
                         <form method="post" enctype="multipart/form-data">
                         <div class="form-inscription">
 
-                            <label for="username"><p>Prenom</p></label>
+                            <label id="Label"for="username"><p>Prenom</p></label>
 
                             <input type="text" name="username" class="input-form-inscription">
                         </div>
@@ -31,7 +31,7 @@
                         
                         <div class="form-inscription">
 
-                            <label for="nom"><p>Nom</p></label>
+                            <label id="Label" for="nom"><p>Nom</p></label>
                         <input type="text" name="nom"  class="input-form-inscription">
                         </div>
                             <div class="form-inscription">
@@ -116,7 +116,6 @@ if (!empty($_POST["cree_compte"]))
             
         unset($_POST["cree_compte"]);
         unset($_POST["conf_pass"]);
-        $_POST["score"]=0;
         $_POST["role"]="admin";
         $_POST["img"]=$file_dest;
         $json[]=$_POST;

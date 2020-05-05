@@ -91,6 +91,25 @@ function reccupere_cle_reponse_simple($json)
 				return $tab_cle_reponses;
 			}
 
-			
+
+
+function trie_decroissant_score ($tab)
+{
+	for ($i=0;count($tab)>$i;$i++)
+	{
+		for ($j=$i+1;count($tab)>$j;$j++)
+		{
+
+			if ($tab[$j]["score"]>$tab[$i]["score"])
+			{
+				$temp=$tab[$j]["score"];
+				$tab[$j]["score"]=$tab[$i]["score"];
+				$tab[$i]["score"]=$temp;
+			}
+		
+		}
+	}
+	return ($tab);
+}
 
  ?>
