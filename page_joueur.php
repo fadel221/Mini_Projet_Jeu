@@ -1,7 +1,32 @@
 <?php
 session_start();
+if (empty($_SESSION))
+   header('location:index.php.php');
+ 
+require_once "fonctions.php";
+$json_question=file_get_contents("questions.json");
+$json_question=json_decode($json_question,true);
+$json_seeting=file_get_contents("seetings.json");
+$json_seeting=json_decode($json_seeting,true);
 
+/*----------------------------Algorithme de Pagination-------------------*/
+                          
+$nbre_pages=$json_seeting[0]["nb_questions_par_jeu"];
+if (isset($_GET["num_page"])&& !empty($_GET["num_page"]))
+{
+    if ($_GET["num_page"]==$nbre_pages || 0>$_GET["num_page"])
+        $_GET["num_page"]=0;
+    $page_actuelle=$_GET["num_page"];
+
+    
+}
+else 
+    $page_actuelle=0;
+/*-------------------------------------------------------------------------*/
 ?>
+
+
+
 
 <!DOCTYPE html>
 <html>
@@ -62,31 +87,83 @@ echo $_SESSION["username"]." ".$_SESSION["nom"]
                 <div class="container-questionnaire">
                 
                     <div class="number-question">
+
+<?php
+
+
+/*----------------------------Affichage des Questions-------------------*/
+
+
+    echo "<h1 align='center'>".($page_actuelle+1).". ".$json_question[$page_actuelle]["question"]."</h1>";
+
+
+?>
+
+
+
+
                     
                         </div>
                         <form>
-                            <input type="text" name="nbre_point" id="nbre_point" value="x pts">
+                            <input type="text" name="nbre_point" id="nbre_point" value= <?php
+
+    echo $json_question[$page_actuelle]["nb-point"]."pts";
+?>>
                         </form>
                         
                         </div>
 
                         <div class="cocher-reponse">
-                            
+            
+            <form method="post">                
+            <?php
 
+/*----------------------------Affichage des Réponses-----------------------*/                                    
+$i=$page_actuelle;
+switch($json_question[$i]["type-reponse"])
+    
+{
+case "Choix Simple":
+    foreach ($json_question[$i] as $key => $value) {
+            
+    if (!($key=="nb-point" || $key=="type-reponse" || $key=="radio" || $key=="question")) 
+            echo "<input type='radio' name='question'>"." ".$value;
+
+
+        }
+        break;
+case 'Texte à Saisir':
+            
+ echo "<input type='text' class='row'>"; 
+
+    break;
+
+case 'Choix Multiple':
+
+for ($j=0;$j<count($json_question[$i]);$j++)
+        {
+            $reponse="reponse_multiple_".($j+1);
+             if (isset($json_question[$i]["check_".($j+1)]))
+                echo "<input type='checkbox'>".$json_question[$i][$reponse]."<br>";
+             else
+                if (isset($json_question[$i][$reponse]))
+                echo "<input type='checkbox'>".$json_question[$i][$reponse]."<br>";
+        }
+            
+            break;
+        }
+        
+
+
+/*-------------------------------------------------------------------------*/
+
+             ?>
+
+
+             </form>
 
                         </div>
 
-                <div class="bouton">
-                    <form method="post">
-                        
-                    <input type="submit" name="previous" value="Précedent"
-                    id="btn-precedent">
-
-                    <input type="submit" name="next" value="Suivant" id="btn-suivant">
-
-                    </form>
-                        
-                        </div>
 
                         <div class="container-score">
                             
@@ -124,15 +201,15 @@ echo $_SESSION["username"]." ".$_SESSION["nom"]
 
         if (!empty($_GET["page"]))
         {
-            if ($_GET["page"]=='1')
+            if ($_GET["page"]=='2')
                 require('Top_score.php');
 
-            else if($_GET["page"]=='2')
+            else if($_GET["page"]=='1')
                 require('best_player_score.php');
         }
 
             else
-                require('best_player_score.php');
+                require('Top_score.php');
                 
                 
                 ?>
@@ -153,9 +230,59 @@ echo $_SESSION["username"]." ".$_SESSION["nom"]
 </body>
 </html>
 
+                <div class="bouton">
+                    
+          
+
+
+                    
+                        
+                        
+                        <?php
+
+
+/*-------------------------Bouton Precedent pour retour-------------------*/
 
 
 
+   echo" <a href='page_joueur.php?num_page=".($page_actuelle-1)."'><input type='submit'  value='Précedent' id='btn-precedent'></a>";
+
+
+
+/*--------------------------Bouton suivant pour avancer-------------------*/
+
+    echo "<a href='page_joueur.php?num_page=".($page_actuelle+1)."'><input type='submit'  value='Suivant' id='btn-suivant'></a>";
+
+    if ($page_actuelle==($nbre_pages-1))
+    {
+
+            echo "<script>
+                var element=document.getElementById('btn-suivant');
+                element.value='Terminé';
+
+
+                </script>";
+
+    }
+    else
+        if ($page_actuelle==0)
+            {
+
+                echo "<script>
+                var element=document.getElementById('btn-precedent');
+                element.style.backgroundColor='silver';
+                element.addEventListener('click',function (e){
+                    e.preventDefault();
+                    
+                    });
+
+                </script>";
+
+            }  
+?>
+
+
+</div>
 
 
 <?php
@@ -181,3 +308,6 @@ if (confirm('Voulez vous déconnectez ?'))
 
 
 ?>
+
+
+  

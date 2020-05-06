@@ -114,17 +114,23 @@ function trie_decroissant_score($tab)
 }
 
 
+function affiche_questions($json,$indice)
 
+{
 	
- 
+if ($json[$indice]["type-reponse"]=="Choix Simple")
+	
+{
 
+	foreach ($json[$indice] as $key => $value) {
 			
-			
+	if (!($key=="nb-point" || $key=="type-reponse" || $key=="radio" || $key=="question")) 
+			echo "<input type='radio' name='question'>"." ".$value;
 
 
-			
+		}
+}
 
-
-
+}
 
  ?>

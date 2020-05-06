@@ -3,10 +3,10 @@
 
 <?php  
 if (empty($_SESSION))
-    header('location:index.php.php');
+   header('location:index.php.php');
 
 include 'fonctions.php';
-$json=file_get_contents("questions.json");
+$json=file_get_contents("seetings.json");
 $json=json_decode($json,true);
 define("NB_QUESTION_PAGE",5);
 $nb_question=count($json);
@@ -21,17 +21,15 @@ if (isset($_POST["OK"]) && !empty($_POST["OK"]))
 			$json[0]["nb_questions_par_jeu"]=$_POST["question"];
 		 $_SESSION["nb_questions_par_jeu"]=$_POST["question"];
 		 $json=json_encode($json);
-		 file_put_contents("questions.json",$json);
+		 file_put_contents("seetings.json",$json);
 	}
 }
 }
 else
 {
 	$_SESSION["nb_questions_par_jeu"]=$json[0]["nb_questions_par_jeu"];
-
  $json=json_encode($json);
-
-		file_put_contents("questions.json",$json);
+		file_put_contents("seetings.json",$json);
 	}
 ?>
 
@@ -65,27 +63,24 @@ $indice_debut=(($page_actuelle-1)*NB_QUESTION_PAGE)+1;
 $indice_fin=(($page_actuelle)*NB_QUESTION_PAGE)+1;
 	for ($i=$indice_debut;$i<$indice_fin;$i++)
 	{
-				if($i==0)
-				continue;						
-		if (!isset($json[$i]))
-								break;
+									
 
 		switch($json[$i]["type-reponse"])
 		{
 
 			case 'Choix Simple':
 			{
-				echo "<h2>".($i)." .".$json[$i]["question"]."</h2>";
+				echo "<h2>".($i+1)." .".$json[$i]["question"]."</h2>";
 				$tab_cle=reccupere_cle_reponse_simple($json[$i]);
 								foreach ($tab_cle  as $cle) {
 												if ($json[$i]["radio"]==$cle)
 												{
 												
-														echo "<input type='radio' name='radio_".($i)."' checked>".$json[$i][$cle]."<br>";
+														echo "<input type='radio' name='radio_".($i+1)."' checked>".$json[$i][$cle]."<br>";
 												}
 													else
 																	if ($cle!=("radio"))
-														echo "<input type='radio' name='radio_".($i)."'>".$json[$i][$cle]."<br>";
+														echo "<input type='radio' name='radio_".($i+1)."'>".$json[$i][$cle]."<br>";
 				}
 						break;
 				}
@@ -93,7 +88,7 @@ $indice_fin=(($page_actuelle)*NB_QUESTION_PAGE)+1;
 
 				case 'Choix Multiple':
 			{
-				echo "<h2>".($i)." .".$json[$i]["question"]."</h2>";
+				echo "<h2>".($i+1)." .".$json[$i]["question"]."</h2>";
 								
 								for ($j=0;$j<count($json[$i]);$j++)
 								{
@@ -110,7 +105,7 @@ $indice_fin=(($page_actuelle)*NB_QUESTION_PAGE)+1;
 				
 						case 'Texte à Saisir':
 						{
-							echo "<h2>".($i)." .".$json[$i]["question"]."</h2>";
+							echo "<h2>".($i+1)." .".$json[$i]["question"]."</h2>";
 						 echo "<input type='text'  value='".$json[$i]["question_simple"]."'>";
 					break;
 						}
@@ -130,25 +125,24 @@ else
 															$indice_fin=(($page_actuelle)*NB_QUESTION_PAGE)+1;
 																for ($i=$indice_debut;$i<$indice_fin;$i++)
 																{
-																			if ($i==0)
-																				continue;
+																		
 																		
 																	switch($json[$i]["type-reponse"])
 																	{
 
 																		case 'Choix Simple':
 																		{
-																			echo "<h2>".($i)." .".$json[$i]["question"]."</h2>";
+																			echo "<h2>".($i+1)." .".$json[$i]["question"]."</h2>";
 																			$tab_cle=reccupere_cle_reponse_simple($json[$i]);
 																							foreach ($tab_cle  as $cle) {
 																											if ($json[$i]["radio"]==$cle)
 																											{
 																											
-																													echo "<input type='radio' name='radio_".($i)."' checked>".$json[$i][$cle]."<br>";
+																													echo "<input type='radio' name='radio_".($i+1)."' checked>".$json[$i][$cle]."<br>";
 																											}
 																												else
 																																if ($cle!=("radio"))
-																													echo "<input type='radio' name='radio_".($i)."'>".$json[$i][$cle]."<br>";
+																													echo "<input type='radio' name='radio_".($i+1)."'>".$json[$i][$cle]."<br>";
 																			}
 																					break;
 																			}
@@ -173,7 +167,7 @@ else
 																			
 																					case 'Texte à Saisir':
 																					{
-																						echo "<h2>".($i)." .".$json[$i]["question"]."</h2>";
+																						echo "<h2>".($i+1)." .".$json[$i]["question"]."</h2>";
 																					 echo "<input type='text'  value='".$json[$i]["question_simple"]."'>";
 																				break;
 																					}

@@ -1,3 +1,9 @@
+<?php 
+if (empty($_SESSION))
+	header('Location:index.php.php');
+
+ ?>
+
 <!DOCTYPE html>
 <html>
 <head>

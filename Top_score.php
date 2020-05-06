@@ -1,5 +1,6 @@
 <?php 
-include ('fonctions.php');
+require_once('fonctions.php');
+
 if (empty($_SESSION))
 	header('Location:index.php.php');
 
@@ -19,6 +20,7 @@ foreach ($json as $key => $value) {
 }
 $best_five_score=five_best_score($tab_score);
 $best_players=trouve_best_players($json,$best_five_score);
+ 
  ?>
 
 
