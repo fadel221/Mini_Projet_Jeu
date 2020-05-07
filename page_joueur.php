@@ -291,9 +291,14 @@ if (empty($_SESSION))
 	header('location:index.php.php');
 
 /*-------------------------------Déconnexion-------------------------------*/
+ if (isset($_POST["deconnect"]) && !empty($_POST["deconnect"]))
+{
+
+unset($_SESSION);
+session_destroy();
 
 
-
+}
 ?>
 
 
