@@ -705,7 +705,7 @@ input[type="password"]
 .number-question
 {
     width: 96%;
-    height: 20%;
+    height: 22%;
     background-color: beige;
     position: relative;
     left:2%;
@@ -972,4 +972,11 @@ input[type="radio"]
 {
     color:black;
     position: absolute;
+}
+#btn-cocher-reponse
+{
+    width:10%;
+    height: 10%;
+    color:darkturquoise;
+    border:1px solid darkturquoise;
 }

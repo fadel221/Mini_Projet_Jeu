@@ -35,6 +35,7 @@ else
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+    
 <div class="header">
 
             <div class="logo">
@@ -71,14 +72,16 @@ echo $_SESSION["username"]." ".$_SESSION["nom"]
             <div class="text-header-container-joueur">
                 <p>BIENVENUE SUR LA PLATEFORME DE JEU DE QUIZZ</p>
                 <p>JOUER ET TESTER VOTRE NIVEAU DE CULTURE GENERALE</p>
-                <form method="POST">
+                
+
                 <input type="submit" name="deconnect" id="btn-deconnexion" value="Deconnexion">
-                </form>
+                
 
 
             </div>
 
         		</div>
+
 
         <div class="font-body-container-joueur">
                     
@@ -94,7 +97,7 @@ echo $_SESSION["username"]." ".$_SESSION["nom"]
 /*----------------------------Affichage des Questions-------------------*/
 
 
-    echo "<h1 align='center'>".($page_actuelle+1).". ".$json_question[$page_actuelle]["question"]."</h1>";
+    echo "<h1 align='center'>Question ".($page_actuelle+1)."/".$nbre_pages."</h1><h2 align='center'>".$json_question[$page_actuelle]['question']."</h2>";
 
 
 ?>
@@ -104,21 +107,22 @@ echo $_SESSION["username"]." ".$_SESSION["nom"]
 
                     
                         </div>
-                        <form>
                             <input type="text" name="nbre_point" id="nbre_point" value= <?php
 
     echo $json_question[$page_actuelle]["nb-point"]."pts";
 ?>>
-                        </form>
+                        
                         
                         </div>
+                                    
 
                         <div class="cocher-reponse">
             
-            <form method="post">                
+                    
             <?php
+/*----------------------------Affichage des Réponses-----------------------*/ 
+echo "<form method='post'>";
 
-/*----------------------------Affichage des Réponses-----------------------*/                                    
 $i=$page_actuelle;
 switch($json_question[$i]["type-reponse"])
     
@@ -127,7 +131,7 @@ case "Choix Simple":
     foreach ($json_question[$i] as $key => $value) {
             
     if (!($key=="nb-point" || $key=="type-reponse" || $key=="radio" || $key=="question")) 
-            echo "<input type='radio' name='question'>"." ".$value;
+            echo "<input type='radio' id='radio' class='btn-radio' name='reponse' value=".$value.">"." ".$value."<br>";
 
 
         }
@@ -152,15 +156,19 @@ for ($j=0;$j<count($json_question[$i]);$j++)
             
             break;
         }
+
+echo "</form>";
+
+?>
+
+
         
 
 
-/*-------------------------------------------------------------------------*/
 
-             ?>
+        
 
-
-             </form>
+             
 
                         </div>
 
@@ -225,10 +233,8 @@ for ($j=0;$j<count($json_question[$i]);$j++)
 
                 </div>
 
-        	</div>
-       </div>
-</body>
-</html>
+    </form>
+
 
                 <div class="bouton">
                     
@@ -251,7 +257,7 @@ for ($j=0;$j<count($json_question[$i]);$j++)
 
 /*--------------------------Bouton suivant pour avancer-------------------*/
 
-    echo "<a href='page_joueur.php?num_page=".($page_actuelle+1)."'><input type='submit'  value='Suivant' id='btn-suivant'></a>";
+    echo "<a href='page_joueur.php?num_page=".($page_actuelle+1)."'><input type='submit' name='suivant' value='Suivant' id='btn-suivant'></a>";
 
     if ($page_actuelle==($nbre_pages-1))
     {
@@ -279,31 +285,12 @@ for ($j=0;$j<count($json_question[$i]);$j++)
                 </script>";
 
             }  
-?>
-
-
-</div>
-
-
-<?php
+echo "</div>";
 if (empty($_SESSION))
 	//Test pour sécuriser l'accées
 	header('location:index.php.php');
 
-if (isset($_POST["deconnect"])&& !empty($_POST["deconnect"]))
-
-{
-	session_destroy();
-
-    echo "
-<script>
-if (confirm('Voulez vous déconnectez ?'))
-
-    document.location.href='index.php.php'
-
-</script>";
-
-}
+/*-------------------------------Déconnexion-------------------------------*/
 
 
 
