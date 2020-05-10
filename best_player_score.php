@@ -14,7 +14,7 @@
 if (!empty($_SESSION))
 {
 	echo "<tr>";
-	echo "<td align='center'>".$_SESSION["score"]."</td>";
+	echo "<td align='center'>".$_SESSION["joueur"]["score"]."</td>";
 	echo "</tr>";
 }
 else

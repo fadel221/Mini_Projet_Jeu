@@ -39,12 +39,12 @@ if (empty($_SESSION))
 
                 <div class="header-menu-container">
                     <div class="decoration-circle" style="background-size:100%;background-image:url(<?php
-                     echo $_SESSION["img"]; ?>);">
+                     echo $_SESSION["joueur"]["img"]; ?>);">
 
                         <div class="nom-admin">
                         <?php 
                         if (!empty($_SESSION))
-                        echo $_SESSION["username"]." ".$_SESSION["nom"]; ?>
+                        echo $_SESSION["joueur"]["username"]." ".$_SESSION["joueur"]["nom"]; ?>
                         </div>
                         </div>
             </div>

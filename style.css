@@ -721,7 +721,7 @@ input[type="password"]
     width:9%;
     height:5%;
     position: absolute;
-    margin-top: 3%;
+    top: 25%;
     left:86%;
     background-color: beige;
     font-size: 20px;
@@ -729,15 +729,16 @@ input[type="password"]
     font-weight: bold;
 }
 
+
 .cocher-reponse
 {
     width: 53.5%;
     height:34%;
     position: absolute;
     display: inline-block;
-    margin-top:15%;
+    top:46%;
     right: 34%;
-    border: 2px solid black;
+    overflow: auto;
 }
 
 .bouton

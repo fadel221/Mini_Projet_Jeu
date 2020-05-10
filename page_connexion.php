@@ -80,7 +80,7 @@ if (isset($_POST["sub"]))
 		{
 			if ($_POST["login"]==$json[$i]["login"] && $_POST["password"]==$json[$i]["password"])
 			{
-				$_SESSION=$json[$i];
+				$_SESSION["joueur"]=$json[$i];
 				if ($json[$i]["role"]=="player")
 
 					header('Location: page_joueur.php');

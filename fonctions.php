@@ -85,7 +85,7 @@ function reccupere_cle_reponse_simple($json)
 		{
 				foreach ($json as $key => $element) {
 					
-					if (!($key=="nb-point" || $key=="question" || $key=="radio" || $key=="type-reponse"))
+					if (!($key=="nb-point" || $key=="question" || $key=="radio" || $key=="type-reponse" || $key=="index"))
 												$tab_cle_reponses[]=$key;
 				}
 
@@ -113,14 +113,49 @@ function trie_decroissant_score($tab)
 	return ($tab);
 }
 
-
+function nb_reponse_checkbox ($nb_chechbox,$indice)
+{
+		for ($i=0;$nb_chechbox>$i;$i++)
+		{
+			$j=$i+1;
+			$chaine="reponse_multiple_".$j;
+				if (isset($_POST[$chaine]))
+				{
+					$_SESSION["reponse_multiple"][$indice][]=$_POST[$chaine];
+				}
+		}
+}
 
 	
  
-
+function reccupere_indice_question($json,$index)
 			
+			{
+							for ($i=0;count($json)>$i;$i++)
+							{
+									if ($json[$i]["index"]==$index)
+									{
+										break;
+									}
+							}
+							return ($i);
+			}
 			
+function reccupere_reponse_multiple ($json_question,$indice)
+{
+	
+                    for ($j=0;$j<count($json_question[$indice]);$j++)
+                    {
+                        
+	                     if (isset($json_question[$indice]["check_".($j+1)]))
+	                     {
+	                        $tab_reponse[]=$json_question[$indice]["check_".($j+1)];
+	                     }
 
+               					}
+
+               						return ($tab_reponse);
+}
 
 			
 

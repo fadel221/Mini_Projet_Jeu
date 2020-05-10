@@ -163,11 +163,11 @@ if (isset($_POST) && !empty($_POST))
 	if (isset($_POST["record"]) && !empty($_POST["record"]))
 	{
 	unset($_POST["record"]);
-	
-$json[]=$_POST;
-var_dump($json);
-$json=json_encode($json);
-file_put_contents("questions.json",$json);
+	$_POST["index"]=count($json);
+	$json[]=$_POST;
+	var_dump($json);
+	$json=json_encode($json);
+	file_put_contents("questions.json",$json);
 }
 }
 ?>
