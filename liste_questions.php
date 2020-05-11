@@ -10,7 +10,6 @@ $json=file_get_contents("seetings.json");
 $json=json_decode($json,true);
 define("NB_QUESTION_PAGE",5);
 $nb_question=count($json)+1;
-$nb_page=ceil($nb_question/NB_QUESTION_PAGE);
 if (isset($_POST["OK"]) && !empty($_POST["OK"])) 
 
 {
@@ -53,6 +52,8 @@ else
 
 $json=file_get_contents("questions.json");
 $json=json_decode($json,true);
+$nbre_question=count($json);
+$nb_page=ceil($nbre_question/NB_QUESTION_PAGE);
 /*--------------------Algorithme de pagination sans url------------------------*/
 if (!isset($_POST["next"]) && empty($_POST["next"]))
 { 

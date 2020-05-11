@@ -123,11 +123,18 @@ btn.addEventListener('submit',function(e)
 
 function DeleteInput(num)
 	{
-		if (num==2)
+
+		if (num==3 && select.value=="Choix Multiple")
 		{
-			alert ('Pour ce type choix il faut au minimum deux champs');
+			alert ('Pour ce type choix il faut au minimum trois champs');
 		DeleteInput.preventDefault();
 		}
+		else
+			if (num==2 && select.value=="Choix Simple")
+			{
+				alert ('Pour ce type choix il faut au minimum deux champs');
+				DeleteInput.preventDefault();
+			}
 		else
 		{	
 		var fils=document.getElementById('row_'+num);
